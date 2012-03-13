@@ -1,0 +1,2 @@
+cobogw for UI animation ------- StarRating
+gwt-image-loader for UI animation -------- Fixed sized image

@@ -1,0 +1,102 @@
+/** Add css rules here for your application. */
+
+
+/** Example rules used by the template application (remove for your app) */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+}
+
+.sendButton {
+  display: block;
+  font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+  width: 400px;
+}
+.gwt-Button {
+  margin: 0;
+  padding: 5px 7px;
+  text-decoration: none;
+  cursor: pointer;
+  cursor: hand;
+  font-size:small;
+
+  border:1px solid #bbb;
+  border-bottom: 1px solid #a0a0a0;
+  border-radius: 3px;
+ -moz-border-radius: 3px;
+}
+.gwt-Button:active {
+  border: 1px inset #ccc;
+}
+
+.gwt-Button:hover {
+  border-color: #939393;
+}
+
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+  margin: 15px 6px 6px;
+}
+.gwt-addTag{
+  margin: 1px 6px 6px;
+  color: #C0C0C0;
+}
+.gwt-avgScore{
+  margin: 1px 1px 1px;
+  color: #C0C0C0;
+}
+.gwt-button0{
+  margin: 5px 5px 5px;
+  color: #FF0000;
+}
+.gwt-button1{
+  margin: 5px 5px 5px;
+  color: #CC0000;
+}
+.gwt-button2{
+  margin: 5px 5px 5px;
+  color: #000066;
+}
+.gwt-button3{
+  margin: 5px 5px 5px;
+  color: #009900;
+}
+.gwt-button4{
+  margin: 5px 5px 5px;
+  color: #FF0099;
+}
+.gwt-button5{
+  margin: 5px 5px 5px;
+  color: #FF66CC;
+}
+.gwt-score-border{
+	margin: 1px 6px 6px;
+	padding: 5px 5px 5px;
+}
+.gwt-picPanel{
+	margin: 6px 6px 6px;
+	border: 2px 2px 2px;
+	padding: 5px 5px 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #COCOCO;
+}
+.gwt-hintsLabel{
+
+}

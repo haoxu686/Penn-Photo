@@ -1,0 +1,6 @@
+A simple Java Web project to let people share photos. 
+Functionalities include user info settings, photo settings (add/delete), 
+friendship (search for people, friend recommendation, friendship browser) and 
+photo rating, tagging.
+MySQL database backed. Front end powered by Google Web Toolkit. Developed 
+under eclipse.

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/pennphoto/group20" xmlns:tns="http://www.example.org/pennphoto/group20" elementFormDefault="qualified">
+
+    <complexType name="userType">
+    	<sequence>
+    		<element name="id" type="int"></element>
+    		<element name="firstName" type="string"></element>
+    		<element name="lastName" type="string"></element>
+    		<element name="email" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="dob" type="date" maxOccurs="1" minOccurs="0"></element>
+    		<element name="gender" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="address" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="type" type="string"></element>
+    		<element name="password" type="string"></element>
+    		<element name="institution" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="interest" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+            <element name="photo" type="tns:photoType" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="circle" type="tns:circleType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="professorType">
+		<complexContent>
+			<extension base="tns:userType">
+			<sequence>
+				<element name="pid" type="string"></element>
+				<element name="researchArea" type="string" maxOccurs="1" minOccurs="0"></element>
+				<element name="office" type="string" maxOccurs="1" minOccurs="0"></element>
+			</sequence>
+			</extension>
+		</complexContent>
+    </complexType>
+    
+    <complexType name="studentType">
+    	<complexContent>
+    		<extension base="tns:userType">
+    		<sequence>
+    			<element name="sid" type="string"></element>
+    			<element name="major" type="string"></element>
+    			<element name="gpa" type="float" maxOccurs="1" minOccurs="0"></element>
+    			<element name="advisor" type="string" maxOccurs="1" minOccurs="0"></element>
+    		</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <complexType name="circleType">
+    	<sequence>
+    		<element name="cid" type="int"></element>
+    		<element name="name" type="string"></element>
+    		<element name="containsFriend" type="int" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="photoType">
+    	<sequence>
+    		<element name="photoid" type="int"></element>
+    		<element name="url" type="string"></element>
+    		<element name="rating" type="tns:ratingType" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="tag" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="visibleTo" type="int" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="uploadTime" type="dateTime"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ratingType">
+    	<sequence>
+    		<element name="rater" type="int"></element>
+    		<element name="score" type="float"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="photodbType">
+    	<choice maxOccurs="unbounded">
+    		<element name="user" type="tns:userType"></element>
+    		<element name="student" type="tns:studentType"></element>
+    		<element name="professor" type="tns:professorType"></element>
+    	</choice>
+    </complexType>
+
+	<element name="photodb" type="tns:photodbType">
+		<key name="userid">
+			<selector xpath="./*"></selector>
+			<field xpath="id"></field>
+		</key>
+		<key name="advisorid">
+			<selector xpath="professor"></selector>
+			<field xpath="pid"></field>
+		</key>
+		<keyref name="advisorRef" refer="tns:advisorid">
+			<selector xpath="student"></selector>
+			<field xpath="advisor"></field>
+		</keyref>
+		<keyref name="circleRef" refer="tns:userid">
+			<selector xpath="./*/circle"></selector>
+			<field xpath="containsFriend"></field>
+		</keyref>
+		<keyref name="raterRef" refer="tns:userid">
+			<selector xpath="./*/photo/rating"></selector>
+			<field xpath="rater"></field>
+		</keyref>
+		<keyref name="visibilityRef" refer="tns:userid">
+			<selector xpath="./*/photo"></selector>
+			<field xpath="visibleTo"></field>
+		</keyref>
+	</element>
+	
+</schema>

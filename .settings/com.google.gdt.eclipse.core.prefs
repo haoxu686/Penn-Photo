@@ -1,0 +1,5 @@
+#Fri Nov 25 02:57:12 EST 2011
+eclipse.preferences.version=1
+launchConfigExternalUrlPrefix=http\://localhost\:8080/pennphoto
+warSrcDir=war
+warSrcDirIsOutput=true

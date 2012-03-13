@@ -1,0 +1,2 @@
+serviceClass: pennphoto.client.model.DataService
+path: 89E7816B7C5B9597CC0B01395B61D910.gwt.rpc
